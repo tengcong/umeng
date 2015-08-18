@@ -1,4 +1,6 @@
+require 'json'
 require 'faraday'
+require 'digest'
 
 module Umeng
   module Services

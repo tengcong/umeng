@@ -1,5 +1,3 @@
-require 'json'
-require 'digest'
 require 'umeng/services'
 
 module Umeng

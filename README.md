@@ -24,12 +24,43 @@ Or install it yourself as:
 ```
 ument = Umeng::Client.new(appkey, app_master_secret)
 umeng.send_message(params)
-umeng.status(params)
+umeng.status(task_id)
+umeng.cancel(task_id)
 ```
 
-## Development
+## Params
+```
+android
+params = {
+  'type': 'broadcast',
+  'payload': {
+    'display_type': 'notification',
+    'body': {
+      'ticker': '通知栏提示文字',
+      'title': '标题',
+      'text': '文字描述',
+      'after_open': 'go_app'
+    },
+    'key1': '1234567891234567890'
+  },
+  'production_mode': 'false',
+  'description': '消息描述'
+}
+```
 
-## License
-
-The gem is available as open source under the terms of the [MIT License](http://opensource.org/licenses/MIT).
+```
+ios
+params = {
+  'type': 'broadcast',
+  'payload': {
+    'aps': {
+      'alert': 'Hello World',
+      'content-available': '3456789456789'
+    },
+    'key1': '1234567891234567890'
+  },
+  'production_mode': 'false',
+  'description': '流云？'
+}
+```
 
