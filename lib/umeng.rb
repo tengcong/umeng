@@ -1,5 +1,5 @@
-require "umeng/version"
+require 'umeng/version'
+require 'umeng/client'
 
 module Umeng
-  # Your code goes here...
 end
