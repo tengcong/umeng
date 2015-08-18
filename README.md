@@ -23,7 +23,7 @@ Or install it yourself as:
 ## Usage
 ```
 ument = Umeng::Client.new(appkey, app_master_secret)
-umeng.send_message(params)
+umeng.push(params)
 umeng.status(task_id)
 umeng.cancel(task_id)
 ```

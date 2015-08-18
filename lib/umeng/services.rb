@@ -1,12 +1,12 @@
-require 'json'
-require 'faraday'
-require 'digest'
+require 'umeng/util'
 
 module Umeng
   module Services
+    include Umeng::Util
+
     # 消息发送
     # POST http://msg.umeng.com/api/send?sign=mysign
-    def send_message(params={})
+    def push(params={})
       uri = 'api/send'
       params.merge!({
         appkey: @appkey,
@@ -41,8 +41,6 @@ module Umeng
 
     private
       def request(uri, params)
-        sign = generate_sign(uri, params)
-
         conn = Faraday.new(:url => Umeng::UMENG_HOST) do |faraday|
           faraday.request  :url_encoded
           faraday.response :logger
@@ -50,19 +48,12 @@ module Umeng
         end
 
         response = conn.post do |req|
-          req.url uri, sign: sign
+          req.url uri, sign: generate_sign(uri, params)
           req.headers['Content-Type'] = 'application/json'
           req.body = params.to_json
         end
 
-        puts response.body
-      end
-
-      def generate_sign(uri, params)
-        method = 'POST'
-        url = [Umeng::UMENG_HOST, '/', uri]
-        post_body = JSON.dump(params)
-        Digest::MD5.hexdigest([method, url, post_body, @app_master_secret].join)
+        result(response.body, uri)
       end
   end
 end
