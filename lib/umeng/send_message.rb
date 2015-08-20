@@ -11,7 +11,7 @@ module Umeng
       params = {
         type: 'broadcast',
         description: opt['description'] || '广播',
-        production_mode: opt['production_mode'] || 'true'
+        production_mode: opt['production_mode'] || 'false'
       }
       case @plantform
       when 'android'
