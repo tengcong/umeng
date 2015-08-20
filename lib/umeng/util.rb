@@ -7,7 +7,7 @@ module Umeng
       Digest::MD5.hexdigest([method, url, post_body, @app_master_secret].join)
     end
 
-    {"status"=>6, "total_count"=>0, "accept_count"=>0, "sent_count"=>0, "open_count"=>0, "dismiss_count"=>0}
+    # {"status"=>6, "total_count"=>0, "accept_count"=>0, "sent_count"=>0, "open_count"=>0, "dismiss_count"=>0}
     def result(body, type)
       result = JSON.load(body)
 

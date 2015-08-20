@@ -1,21 +1,20 @@
 require 'json'
 require 'faraday'
 require 'digest'
-require 'umeng/services'
+require 'umeng/send_message'
 
 module Umeng
   UMENG_HOST = 'http://msg.umeng.com'
   
   class Client
-    include Umeng::Services
+    include Umeng::SendMessage
 
-    attr_accessor :appkey, :app_master_secret
+    attr_accessor :appkey, :app_master_secretm, :plantform
 
-    def initialize(appkey, app_master_secret)
+    def initialize(appkey, app_master_secret, plantform)
+      @plantform = plantform
       @appkey = appkey
       @app_master_secret = app_master_secret
     end
   end
 end
-
-

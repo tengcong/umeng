@@ -22,9 +22,17 @@ Or install it yourself as:
 
 ## Usage
 ```
-ument = Umeng::Client.new(appkey, app_master_secret)
-umeng.push(params)
+umeng = Umeng::Client.new(appkey, app_master_secret, plantform)
+
+广播
+umeng.push_broadcast(content, opt={})
+单播
+umeng.push_unicast(device_tokens, content, opt={})
+列播
+umeng.push_listcast(device_tokens, content, opt={})
+
 umeng.status(task_id)
+
 umeng.cancel(task_id)
 ```
 

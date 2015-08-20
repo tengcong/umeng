@@ -3,7 +3,7 @@ require 'umeng/util'
 module Umeng
   module Services
     include Umeng::Util
-
+    
     # 消息发送
     # POST http://msg.umeng.com/api/send?sign=mysign
     def push(params={})
