@@ -14,10 +14,10 @@ module Umeng
         production_mode: opt['production_mode'] || 'false'
       }
       case @plantform
-      when 'android'
+      when 'Android'
         params.merge! android_params(content, opt)
         push(params)
-      when 'ios'
+      when 'iOS'
         params.merge! ios_params(content, opt)
         push(params)
       end
@@ -32,10 +32,10 @@ module Umeng
         production_mode: opt['production_mode'] || 'false',
       }
       case @plantform
-      when 'android'
+      when 'Android'
         params.merge! android_params(content, opt)
         push(params)
-      when 'ios'
+      when 'iOS'
         params.merge! ios_params(content, opt)
         push(params)
       end
@@ -50,10 +50,10 @@ module Umeng
         production_mode: opt['production_mode'] || 'false',
       }
       case @plantform
-      when 'android'
+      when 'Android'
         params.merge! android_params(content, opt)
         push(params)
-      when 'ios'
+      when 'iOS'
         params.merge! ios_params(content, opt)
         push(params)
       end
