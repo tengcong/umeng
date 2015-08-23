@@ -7,54 +7,54 @@ module Umeng
     include Umeng::JsonBody
 
     # 广播
-    def push_broadcast(content, opt={})
+    def push_broadcast(opts={})
       params = {
         type: 'broadcast',
-        description: opt['description'] || '广播',
-        production_mode: opt['production_mode'] || 'false'
+        description: opts['description'] || '广播',
+        production_mode: opts['production_mode'] || 'false'
       }
       case @plantform
       when 'Android'
-        params.merge! android_params(content, opt)
+        params.merge! android_params(content, opts)
         push(params)
       when 'iOS'
-        params.merge! ios_params(content, opt)
+        params.merge! ios_params(content, opts)
         push(params)
       end
     end
 
     # 单播
-    def push_unicast(device_tokens, content, opt={})
+    def push_unicast(device_tokens, opts={})
       params = {
         device_tokens: device_tokens,
         type: 'unicast',
-        description: opt['description'] || '单播',
-        production_mode: opt['production_mode'] || 'false',
+        description: opts[:description] || '单播',
+        production_mode: opts[:production_mode] || 'false',
       }
       case @plantform
       when 'Android'
-        params.merge! android_params(content, opt)
+        params.merge! android_params(opts)
         push(params)
       when 'iOS'
-        params.merge! ios_params(content, opt)
+        params.merge! ios_params(opts)
         push(params)
       end
     end
 
     # 列播
-    def push_listcast(device_tokens, content, opt={})
+    def push_listcast(device_tokens, opts={})
       params = {
         device_tokens: device_tokens,
         type: 'listcast',
-        description: opt['description'] || '列播',
-        production_mode: opt['production_mode'] || 'false',
+        description: opts[:description] || '列播',
+        production_mode: opts[:production_mode] || 'false',
       }
       case @plantform
       when 'Android'
-        params.merge! android_params(content, opt)
+        params.merge! android_params(opts)
         push(params)
       when 'iOS'
-        params.merge! ios_params(content, opt)
+        params.merge! ios_params(opts)
         push(params)
       end
     end

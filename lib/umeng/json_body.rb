@@ -1,24 +1,24 @@
 module Umeng
   module JsonBody
-    def android_params(content, opt={})
-      display_type = opt[:display_type] || "message"
+    def android_params(opts={})
+      display_type = opts[:display_type] || "message"
       {
-        'payload': {
-          'display_type': display_type,
-          'body': {
-            'custom': content
+        payload: {
+          display_type: display_type,
+          body: {
+            custom: opts[:content]
           }
         }
       }
     end
 
-    def ios_params(content, opt={})
+    def ios_params(opts={})
       {
-        'payload': {
-          'aps': {
-            'alert': content
+        payload: {
+          aps: {
+            alert: opts[:content]
           }
-        }.merge(opt[:kv])
+        }.merge(opts[:key_value])
       }
     end
   end
