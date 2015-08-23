@@ -24,7 +24,7 @@ Or install it yourself as:
 ```
 创建 umeng = Umeng::Client.new(appkey, app_master_secret, plantform)
 
-广播 umeng.push_broadcast(content, opts={})
+广播 umeng.push_broadcast(opts={})
 
 单播 umeng.push_unicast(device_tokens, opts={})
 
