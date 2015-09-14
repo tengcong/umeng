@@ -44,10 +44,10 @@ module Umeng
     # 列播
     def push_listcast(device_tokens, opts={})
       params = {
-        device_tokens: device_tokens,
+        device_tokens: device_tokens,join(','),
         type: 'listcast',
-        description: opts[:description] || '列播',
-        production_mode: opts[:production_mode] || 'false',
+        description: opts[:description],
+        production_mode: opts[:production_mode],
       }
       case @plantform
       when 'Android'
