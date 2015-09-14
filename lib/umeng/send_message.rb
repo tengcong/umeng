@@ -10,8 +10,7 @@ module Umeng
     def push_broadcast(opts={})
       params = {
         type: 'broadcast',
-        description: opts['description'] || '广播',
-        production_mode: opts['production_mode'] || 'false'
+        production_mode: opts['production_mode'] || 'true'
       }
       case @plantform
       when 'Android'
@@ -28,8 +27,7 @@ module Umeng
       params = {
         device_tokens: device_tokens,
         type: 'unicast',
-        description: opts[:description] || '单播',
-        production_mode: opts[:production_mode] || 'false',
+        production_mode: opts[:production_mode] || 'true',
       }
       case @plantform
       when 'Android'
@@ -44,10 +42,9 @@ module Umeng
     # 列播
     def push_listcast(device_tokens, opts={})
       params = {
-        device_tokens: device_tokens,join(','),
+        device_tokens: device_tokens,
         type: 'listcast',
-        description: opts[:description],
-        production_mode: opts[:production_mode],
+        production_mode: opts[:production_mode] || 'true',
       }
       case @plantform
       when 'Android'

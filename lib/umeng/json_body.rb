@@ -1,12 +1,11 @@
 module Umeng
   module JsonBody
     def android_params(opts={})
-      display_type = opts[:display_type] || 'notification'
       {
         payload: {
-          display_type: display_type,
+          display_type: 'message',
           body: {
-            custom: opts[:content]
+            custom: opts[:key_value]
           }
         }
       }
@@ -23,5 +22,3 @@ module Umeng
     end
   end
 end
-
-# 55f641d5695a3231e6d70400
