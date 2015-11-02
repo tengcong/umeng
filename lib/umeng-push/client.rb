@@ -20,6 +20,6 @@ module UmengPush
       end
     end
 
-    attr_accessor :appkey, :app_master_secret
+    attr_accessor :appkey, :app_master_secret, :production_mode
   end
 end

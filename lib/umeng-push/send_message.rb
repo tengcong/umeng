@@ -6,15 +6,11 @@ module UmengPush
     include UmengPush::Services
     include UmengPush::JsonBody
 
-    def production_mode?
-      Rails.production? ? 'true' : 'false'
-    end
-
     # 广播
     def push_broadcast(opts={})
       params = {
         type: 'broadcast',
-        production_mode: production_mode?
+        production_mode: @production_mode
       }
       params.merge! ios_params(opts)
       push(params)
@@ -25,7 +21,7 @@ module UmengPush
       params = {
         device_tokens: device_tokens,
         type: 'unicast',
-        production_mode: production_mode?
+        production_mode: @production_mode
       }
       params.merge! ios_params(opts)
       push(params)
@@ -36,7 +32,7 @@ module UmengPush
       params = {
         device_tokens: device_tokens,
         type: 'listcast',
-        production_mode: production_mode?
+        production_mode: @production_mode
       }
 
 
@@ -46,6 +42,5 @@ module UmengPush
       params.merge! ios_params(opts)
       push(params)
     end
-
   end
 end
