@@ -16,7 +16,7 @@ module UmengPush
         payload: {
           aps: {
             alert: opts[:content]
-          }
+          }.merge(opts[:aps])
         }.merge(opts[:key_value]),
         description: opts[:description]
       }
