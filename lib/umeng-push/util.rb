@@ -1,10 +1,10 @@
-module Umeng
+module UmengPush
   module Util
     def generate_sign(uri, params)
       raise 'app master secret provided' unless @app_master_secret
 
       method = 'POST'
-      url = [Umeng::UMENG_HOST, '/', uri]
+      url = [UmengPush::UMENG_HOST, '/', uri]
       post_body = JSON.dump(params)
       Digest::MD5.hexdigest([method, url, post_body, @app_master_secret].join)
     end

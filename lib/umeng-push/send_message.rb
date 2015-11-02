@@ -1,10 +1,10 @@
-require 'umeng/services'
-require 'umeng/json_body'
+require 'umeng-push/services'
+require 'umeng-push/json_body'
 
-module Umeng
+module UmengPush
   module SendMessage
-    include Umeng::Services
-    include Umeng::JsonBody
+    include UmengPush::Services
+    include UmengPush::JsonBody
 
     # 广播
     def push_broadcast(opts={})
@@ -12,7 +12,8 @@ module Umeng
         type: 'broadcast',
         production_mode: opts['production_mode'] || 'true'
       }
-      push_with opts
+      params.merge! ios_params(opts)
+      push(params)
     end
 
     # 单播
@@ -22,7 +23,8 @@ module Umeng
         type: 'unicast',
         production_mode: opts[:production_mode] || 'true',
       }
-      push_with opts
+      params.merge! ios_params(opts)
+      push(params)
     end
 
     # 列播
@@ -32,17 +34,15 @@ module Umeng
         type: 'listcast',
         production_mode: opts[:production_mode] || 'true',
       }
-      push_with opts
-    end
 
-    def push_with opts
+
       # # to Android
       # params.merge! android_params(opts)
       # push(params)
 
-      # to iOS
       params.merge! ios_params(opts)
       push(params)
     end
+
   end
 end

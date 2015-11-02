@@ -1,8 +1,8 @@
-require 'umeng/util'
+require 'umeng-push/util'
 
-module Umeng
+module UmengPush
   module Services
-    include Umeng::Util
+    include UmengPush::Util
 
     # 消息发送
     # POST http://msg.umeng.com/api/send?sign=mysign
@@ -44,7 +44,7 @@ module Umeng
 
     private
       def request(uri, params)
-        conn = Faraday.new(:url => Umeng::UMENG_HOST) do |faraday|
+        conn = Faraday.new(:url => UmengPush::UMENG_HOST) do |faraday|
           faraday.request  :url_encoded
           faraday.response :logger
           faraday.adapter  Faraday.default_adapter

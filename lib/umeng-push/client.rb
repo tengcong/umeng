@@ -1,13 +1,13 @@
 require 'json'
 require 'faraday'
 require 'digest'
-require 'umeng/send_message'
+require 'umeng-push/send_message'
 
-module Umeng
+module UmengPush
   UMENG_HOST = 'http://msg.umeng.com'
 
   class Client
-    include Umeng::SendMessage
+    include UmengPush::SendMessage
 
     class << self
       def config
@@ -20,6 +20,6 @@ module Umeng
       end
     end
 
-    attr_accessor :appkey, :app_master_secretm
+    attr_accessor :appkey, :app_master_secret
   end
 end

@@ -1,23 +1,23 @@
 # coding: utf-8
 lib = File.expand_path('../lib', __FILE__)
 $LOAD_PATH.unshift(lib) unless $LOAD_PATH.include?(lib)
-require 'umeng/version'
+require 'umeng-push/version'
 
 Gem::Specification.new do |spec|
-  spec.name          = "umeng"
-  spec.version       = Umeng::VERSION
-  spec.authors       = ["menghuanwd"]
-  spec.email         = ["651019063@qq.com"]
+  spec.name          = "umeng-push"
+  spec.version       = UmengPush::VERSION
+  spec.authors       = ["teng.cong"]
+  spec.email         = ["congteng45@gmail.com"]
 
-  spec.summary       = "umeng api"
-  spec.description   = "umeng api"
-  spec.homepage      = "https://github.com/menghuanwd/umeng"
+  spec.summary       = "umeng push api"
+  spec.description   = "umeng push api"
+  spec.homepage      = "https://github.com/tengcong/umeng"
   spec.license       = "MIT"
 
   # Prevent pushing this gem to RubyGems.org by setting 'allowed_push_host', or
   # delete this section to allow pushing this gem to any host.
   if spec.respond_to?(:metadata)
-    spec.metadata['allowed_push_host'] = "https://rubygems.org"
+    spec.metadata['allowed_push_host'] = "https://taobao.ruby.org"
   else
     raise "RubyGems 2.0 or newer is required to protect against public gem pushes."
   end
