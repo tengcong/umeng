@@ -12,14 +12,7 @@ module Umeng
         type: 'broadcast',
         production_mode: opts['production_mode'] || 'true'
       }
-      case @plantform
-      when 'Android'
-        params.merge! android_params(content, opts)
-        push(params)
-      when 'iOS'
-        params.merge! ios_params(content, opts)
-        push(params)
-      end
+      push_with opts
     end
 
     # 单播
@@ -29,14 +22,7 @@ module Umeng
         type: 'unicast',
         production_mode: opts[:production_mode] || 'true',
       }
-      case @plantform
-      when 'Android'
-        params.merge! android_params(opts)
-        push(params)
-      when 'iOS'
-        params.merge! ios_params(opts)
-        push(params)
-      end
+      push_with opts
     end
 
     # 列播
@@ -46,15 +32,17 @@ module Umeng
         type: 'listcast',
         production_mode: opts[:production_mode] || 'true',
       }
-      case @plantform
-      when 'Android'
-        params.merge! android_params(opts)
-        push(params)
-      when 'iOS'
-        params.merge! ios_params(opts)
-        push(params)
-      end
+      push_with opts
     end
 
+    def push_with opts
+      # # to Android
+      # params.merge! android_params(opts)
+      # push(params)
+
+      # to iOS
+      params.merge! ios_params(opts)
+      push(params)
+    end
   end
 end

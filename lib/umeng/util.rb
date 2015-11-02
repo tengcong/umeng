@@ -1,6 +1,8 @@
 module Umeng
   module Util
     def generate_sign(uri, params)
+      raise 'app master secret provided' unless @app_master_secret
+
       method = 'POST'
       url = [Umeng::UMENG_HOST, '/', uri]
       post_body = JSON.dump(params)
@@ -19,7 +21,6 @@ module Umeng
       when 'api/cancel'
         body
       end
-
     end
   end
 end

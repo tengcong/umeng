@@ -3,10 +3,11 @@ require 'umeng/util'
 module Umeng
   module Services
     include Umeng::Util
-    
+
     # 消息发送
     # POST http://msg.umeng.com/api/send?sign=mysign
     def push(params={})
+      raise 'no appkey provided' unless @appkey
       uri = 'api/send'
       params.merge!({
         appkey: @appkey,
@@ -18,6 +19,7 @@ module Umeng
     # 查看状态
     # POST http://msg.umeng.com/api/status?sign=mysign
     def status(task_id)
+      raise 'no appkey provided' unless @appkey
       uri = 'api/status'
       params = {
         appkey: @appkey,
@@ -30,6 +32,7 @@ module Umeng
     #取消任务
     #POST http://msg.umeng.com/api/cancel?sign=mysign
     def cancel(task_id)
+      raise 'no appkey provided' unless @appkey
       uri = 'api/cancel'
       params = {
           appkey: @appkey,
