@@ -17,7 +17,8 @@ module UmengPush
           aps: {
             alert: opts[:content]
           }
-        }.merge(opts[:key_value])
+        }.merge(opts[:key_value]),
+        description: opts[:description]
       }
     end
   end
